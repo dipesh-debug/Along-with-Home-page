@@ -7,7 +7,7 @@ import { actionTypes, useStateValue } from "../store";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import NavBar from "../components/Navbar";
-import RecentPosts from "../components/RecentPosts/RecentPosts";
+
 const Home = () => {
   const [, , removeCookie] = useCookies(["jwt"]);
   const [, dispatch] = useStateValue();
@@ -23,7 +23,7 @@ const Home = () => {
       {" "}
       <NavBar logout={logout} />
       <Hero />
-      <RecentPosts />
+     
       <Footer />
     </Box>
   );

@@ -56,7 +56,7 @@ const Signup = () => {
               inputProps={{
                 type: "text",
                 placeholder: "Enter Name...",
-                focusBorderColor: "orange.400",
+                focusBorderColor: "blue.400",
               }}
             />
             <InputControl
@@ -65,7 +65,7 @@ const Signup = () => {
               inputProps={{
                 type: "email",
                 placeholder: "Enter Email...",
-                focusBorderColor: "orange.400",
+                focusBorderColor: "blue.400",
               }}
             />
             <InputControl
@@ -74,12 +74,12 @@ const Signup = () => {
               inputProps={{
                 type: "password",
                 placeholder: "Enter Password...",
-                focusBorderColor: "orange.400",
+                focusBorderColor: "blue.400",
               }}
             />
             <Button
               isLoading={isLoading}
-              colorScheme="orange"
+              colorScheme="blue"
               mt="4"
               type="submit"
             >

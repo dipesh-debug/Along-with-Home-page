@@ -1,43 +1,66 @@
-import { Button } from "@chakra-ui/button";
-import { Image } from "@chakra-ui/image";
-import { Box, Container, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
+
 import React from "react";
+import{Link} from 'react-router-dom';
+import "./Hero.css";
+import {Card,Button, Container} from "react-bootstrap";
+class App extends React.Component {
+	
 
-const Hero = () => {
-  return (
-    <Container
-      maxW="1300px"
-      display="flex"
-      h="100vh"
-      alignItems="center"
-      flexDirection={{ base: "column-reverse", md: "row" }}
-    >
-      <Stack height="350px" justify="space-around" mt={{ base: "8", md: "0" }}>
-        <Heading fontSize={{ base: "2xl", sm: "3xl", md: "6xl" }} as="h1">
-          Get Crypto Related Knowledge
-        </Heading>
-        <Text
-          fontSize={{ base: "sm", sm: "md", md: "lg" }}
-          as="p"
-          maxW={{ base: "100%", md: "80%" }}
-        >
-          Vivamus suscipit tortor eget felis porttitor volutpat. Mauris blandit
-          aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin
-          molestie malesuada. Sed
-        </Text>
-        <Box>
-          <Button colorScheme="orange">Check Posts</Button>
-        </Box>
-      </Stack>
-      <Flex mt={{ base: "8", md: "0" }} justifyContent="center">
-        <Image
-          width={{ base: "70%", md: "auto" }}
-          mr="4"
-          src="/images/btc.svg"
-        />
-      </Flex>
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			datas: [],
+			DataisLoaded: false
+		};
+	}
+
+	componentDidMount() {
+		fetch(
+"http://127.0.0.1:9000/api/streams/matches?format=json")
+			.then((res) => res.json())
+			.then((json) => {
+				this.setState({
+					datas: json,
+					DataisLoaded: true
+				});
+			})
+	}
+	render() {
+		const { DataisLoaded, datas } = this.state;
+		if (!DataisLoaded) return <div>
+			<h1> Please wait some time.... </h1> </div> ;
+
+		return (
+       <>   
+       <Container>
+		<div className = "App">
+             
+			<h1> List of Matches </h1> {
+				datas.map((data) => (
+				<>
+            <main class="page-content">
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Match_id:{data.id},</h2>
+      <p class="copy">Description: {data.description},</p>
+      <button class="btn">embded_code: <a href={data.embed_code}>{data.embed_code}</a></button>
+    </div>
+  </div>
+ 
+</main></>
+       
+				))
+			}
+        <Link to ='/App'></Link>
+		</div>
     </Container>
-  );
-};
+    
+  </>
+	);
+}
+}
 
-export default Hero;
+
+export default App;

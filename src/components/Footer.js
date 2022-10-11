@@ -6,11 +6,11 @@ const Footer = () => {
     <Grid
       placeItems="center"
       fontSize="2xl"
-      bg="orange.600"
+      bg="blue.600"
       color="white"
       p="8"
     >
-      2021 © copyright @dosomecoding
+      2021 © copyright Team KWDR
     </Grid>
   );
 };

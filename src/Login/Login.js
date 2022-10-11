@@ -32,6 +32,7 @@ const Login = () => {
 
   if (isError) {
     toast({ title: error.message, status: "error" });
+    alert("Please Enter Valid Id and Password");
   }
 
   return (
@@ -43,7 +44,7 @@ const Login = () => {
     >
       <Stack width="300px" p="4" boxShadow="xl" borderRadius="xl">
         <Formik
-          initialValues={{ email: "anshu5@gmail.com", password: "123456" }}
+          initialValues={{ email: "hello1@gmail.com", password: "123456@" }}
           onSubmit={async (values) => {
             try {
               await mutateAsync({
@@ -62,7 +63,7 @@ const Login = () => {
               inputProps={{
                 type: "email",
                 placeholder: "Enter Email...",
-                focusBorderColor: "orange.400",
+                focusBorderColor: "blue.400",
               }}
             />
             <InputControl
@@ -71,12 +72,12 @@ const Login = () => {
               inputProps={{
                 type: "password",
                 placeholder: "Enter Password...",
-                focusBorderColor: "orange.400",
+                focusBorderColor: "blue.400",
               }}
             />
             <Button
               isLoading={isLoading}
-              colorScheme="orange"
+              colorScheme="blue"
               mt="4"
               type="submit"
             >
