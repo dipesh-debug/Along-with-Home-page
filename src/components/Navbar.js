@@ -1,14 +1,17 @@
 import { Button } from "@chakra-ui/button";
-import { SearchIcon } from "@chakra-ui/icons";
+// import { SearchIcon } from "@chakra-ui/icons";
+import "./Hero.css";
 
 // import { InputGroup, InputLeftElement } from "@chakra-ui/input";
 import { Container, Flex, Text } from "@chakra-ui/layout";
 
 const NavBar = ({ logout }) => {
   return (
+    <>
+    <div className="Navbar">
     <Container
       as="nav"
-      maxW="1300px"
+      maxW="100%"
       display="flex"
       justifyContent="space-between"
       padding="4"
@@ -28,6 +31,8 @@ const NavBar = ({ logout }) => {
         <Button onClick={logout}> Logout</Button>
       </Flex>
     </Container>
+    </div>
+    </>
   );
 };
 

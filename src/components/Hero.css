@@ -1,11 +1,4 @@
-h1{
-    font-size: 170px;
-    font-weight: 600;
-    color: #fdfdfe;
-    text-align : center;
-    text-shadow: 0px 0px 5px #d495b3, 0px 0px 10px #d393a7, 0px 0px 10px #d3939f,
-      0px 0px 20px #d39393;
-  }
+
 .Card-Container{
     display:flex;
     justify-content: space-between;
@@ -15,7 +8,7 @@ h1{
 
 
 @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
-:root {
+/* :root {
   --d: 700ms;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
   --font-sans: "Rubik", sans-serif;
@@ -24,16 +17,18 @@ h1{
 
 * {
   box-sizing: border-box;
+  
 }
 
 html, body {
   height: 100%;
+  width: 100%;
 }
 
 body {
   display: grid;
   place-items: center;
-}
+} */
 
 .page-content {
   display: grid;
@@ -57,7 +52,7 @@ body {
 .card {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: left;
   overflow: hidden;
   padding: 1rem;
   width: 100%;
@@ -68,7 +63,7 @@ body {
 }
 @media (min-width: 600px) {
   .card {
-    height: 350px;
+    height: 50%;
   }
 }
 .card:before {
@@ -76,8 +71,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 110%;
+  width: 110%;
+  height: 80%;
   background-size: cover;
   background-position: 0 0;
   transition: transform calc(var(--d) * 1.5) var(--e);
@@ -97,9 +92,13 @@ body {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 .card:nth-child(1):before {
-  background-image: url(https://resources.premierleague.com/premierleague/photo/2021/11/18/c0b8dffe-ba8b-4a8b-b56b-646bab8bce2c/Cristiano-Ronaldo.jpg);
+  background-image: url(https://t3.ftcdn.net/jpg/01/82/92/02/360_F_182920267_FxAvatbfJCixzXuM5VXbogjFTR6BqiCv.jpg);
+  width: 100%;
+  height: 100%;
 }
-
+.container{
+  align-items: left;
+}
 
 .content {
   position: relative;
@@ -119,6 +118,9 @@ body {
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
+  color: #0d0d0d;
+  text-align: left;
+  
 }
 
 .copy {
@@ -157,10 +159,6 @@ body {
     
   }
 
-  .content {
-    transform: translateY(calc(100% - 4.5rem));
-    display: flex;
-  }
   .content > *:not(.title) {
     opacity: 0;
     transform: translateY(1rem);
@@ -195,4 +193,11 @@ body {
 .card:focus-within .content > *:not(.title) {
     transition-duration: 0s;
   }
+}
+.Navbar{
+  max-width: 1000px;
+
+
+
+
 }

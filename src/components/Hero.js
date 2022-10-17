@@ -1,66 +1,85 @@
 
-import React from "react";
-import{Link} from 'react-router-dom';
+import {React,useEffect,useState} from "react";
+import{ useNavigate} from 'react-router-dom';
 import "./Hero.css";
-import {Card,Button, Container} from "react-bootstrap";
-class App extends React.Component {
+import { Container,} from "react-bootstrap";
+import  "./Video";
+import "../App";
+
+
+// import { useNavigate } from "react-router";
+
+export function Hero(props){
 	
-
-
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			datas: [],
+	const [state, setState] = useState({
+		datas: [],
 			DataisLoaded: false
-		};
-	}
 
-	componentDidMount() {
-		fetch(
+});
+	useEffect(()=>{
+		return () =>{fetch(
 "http://127.0.0.1:9000/api/streams/matches?format=json")
 			.then((res) => res.json())
 			.then((json) => {
-				this.setState({
+				setState({
 					datas: json,
 					DataisLoaded: true
-				});
+				})
 			})
-	}
-	render() {
-		const { DataisLoaded, datas } = this.state;
-		if (!DataisLoaded) return <div>
+			if (!DataisLoaded) return <div>
 			<h1> Please wait some time.... </h1> </div> ;
+		
+		}});
+	
+		const { DataisLoaded, datas } = state;
+		// const Navigate = useNavigate();
+	const navigate = useNavigate();
+    const Matches = () => {
+        navigate("/Stream");
+		
+		
+    }
+		
+		
 
 		return (
        <>   
        <Container>
+		
+		
 		<div className = "App">
              
-			<h1> List of Matches </h1> {
+			 {
 				datas.map((data) => (
-				<>
-            <main class="page-content">
-  <div class="card">
-    <div class="content">
-      <h2 class="title">Match_id:{data.id},</h2>
-      <p class="copy">Description: {data.description},</p>
-      <button class="btn">embded_code: <a href={data.embed_code}>{data.embed_code}</a></button>
+				
+            <main className="page-content">
+  <div className="card">
+    <div className="content">
+      {/* <h2 className="title">Match_id:{data.id},</h2> */}
+      <h2 className="title"> {data.description}</h2>
+	  {/* <button className="btn"> <a href={data.embed_code}>Click Here to watch</a></button> */}
+	  
+      <button className="btn" onClick={Matches }>Click Here to Watch</button>
+
+	  
     </div>
   </div>
  
-</main></>
+</main>
        
 				))
 			}
-        <Link to ='/App'></Link>
+      
 		</div>
+		{/* <Link to ="/Video"/> */}
+		
     </Container>
-    
+   
   </>
+
 	);
 }
-}
 
 
-export default App;
+
+export default Hero;

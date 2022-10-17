@@ -7,7 +7,7 @@ import { InputControl } from "formik-chakra-ui";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useMutation } from "react-query";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import { login } from "../networkCalls";
 import { actionTypes, useStateValue } from "../store";
@@ -16,7 +16,7 @@ const Login = () => {
   const [, setCookie] = useCookies(["jwt"]);
   const [{ token }, dispatch] = useStateValue();
   console.log(token);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { isError, error, isLoading, mutateAsync } = useMutation(
     "login",
     login,
@@ -24,7 +24,7 @@ const Login = () => {
       onSuccess: (data) => {
         dispatch({ type: actionTypes.SET_TOKEN, value: data.token });
         setCookie("jwt", data.token);
-        history.push("/");
+        navigate("/");
       },
     }
   );
