@@ -11,9 +11,11 @@ import Home from "./Home/Home";
 import Login from "./Login/Login";
 import Signup from "./Signup/Signup";
 import Video from "./components/Video";
+import Forgotpassword from "./components/Forgotpassword";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { actionTypes, useStateValue } from "./store";
 import { useCookies } from "react-cookie";
+import PasswordReset from "./components/PasswordReset/Password";
 
 export function App(){
 const queryClient = new QueryClient();
@@ -55,7 +57,9 @@ const queryClient = new QueryClient();
               
             </Route> */}
              <Route  path="/Stream"  element={token ? <Video /> : <Navigate replace to="/" />} />
+             <Route  path="/forgotpassword"  element={ <Forgotpassword/> } />
             {/* <Navigate replace to="/" /> */}
+            <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
           </Routes>
         </Router>
       </QueryClientProvider>

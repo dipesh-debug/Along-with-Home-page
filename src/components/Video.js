@@ -2,12 +2,19 @@ import {React,useState,useEffect} from 'react';
 import ReactPlayer from 'react-player/youtube';
 import"./Video.css";
 import  "./Hero";
+
+
+
+
 export function Stream() {
+
+ 
     const [state, setState] = useState({
 		datas: [],
 			DataisLoaded: false
 
 	});
+  
 	useEffect(()=>{
 		fetch(
 "http://127.0.0.1:9000/api/streams/matches?format=json")
@@ -23,15 +30,22 @@ export function Stream() {
     if (!DataisLoaded) return <div>
 			<h1> Please wait some time.... </h1> </div> ;
 
+   
+
           return (
+
          <>
+          
+        
+        
+              
              <div className = "Stream-app">
+             
+
                   
                   {
                      datas.map((data) => (
                         
-    //    <><h1>Match_id:{data.id}</h1>
-    //    <p> {data.description}</p>
  
   <><h1 className='text'>Match_id:{data.id}</h1>
   <h2 className='desc'>
@@ -39,14 +53,18 @@ export function Stream() {
   </h2>
  
 
-          
-        <ReactPlayer
+
+      
+      
+     
+        <ReactPlayer 
           className='react-player'
-          url={data.embed_code}
-                      playing
+          url={data.embed_code} 
+                      // playing
                       loop
-          
-          controls/>
+                      controls
+                            
+          />
         
    
         
@@ -56,7 +74,9 @@ export function Stream() {
                      ))
 }
 
-                     </div></>
+                     
+      </div>
+              </>
 
                      
           );

@@ -1,3 +1,4 @@
+
 h1 {
     position: relative;
     margin: 0 auto 20px;
@@ -46,8 +47,8 @@ h1 {
     min-height: 100vh;
     margin: 0;
     padding: 20px 80px;
-    color: #fff;
-    background-color: #c5e0dd;
+   
+   
     font-family: 'Merriweather', serif
   }
   
@@ -59,4 +60,14 @@ h1 {
 }
 .react-player{
     width: 500px;
+    margin-left: 275px;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    
+
 }
+
+
+
+
+

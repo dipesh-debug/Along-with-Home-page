@@ -1,23 +1,26 @@
 import { Button } from "@chakra-ui/button";
 import { Container, Stack } from "@chakra-ui/layout";
 
-import { useToast } from "@chakra-ui/toast";
 import { Form, Formik } from "formik";
 import { InputControl } from "formik-chakra-ui";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
+import "./Login.css";
+
 
 import { login } from "../networkCalls";
 import { actionTypes, useStateValue } from "../store";
+
+
 
 const Login = () => {
   const [, setCookie] = useCookies(["jwt"]);
   const [{ token }, dispatch] = useStateValue();
   console.log(token);
   const navigate = useNavigate();
-  const { isError, error, isLoading, mutateAsync } = useMutation(
+  const { isError, isLoading, mutateAsync } = useMutation(
     "login",
     login,
     {
@@ -28,14 +31,26 @@ const Login = () => {
       },
     }
   );
-  const toast = useToast();
+
 
   if (isError) {
-    toast({ title: error.message, status: "error" });
+    
     alert("Please Enter Valid Id and Password");
   }
+  const signup = () => {
+    navigate("/Signup");
+  }
+    const forgot = () => {
+      navigate("/forgotpassword");
+
+
+}
+
+
+
 
   return (
+    <div className="Box-front">
     <Container
       display="flex"
       alignItems="center"
@@ -44,12 +59,13 @@ const Login = () => {
     >
       <Stack width="300px" p="4" boxShadow="xl" borderRadius="xl">
         <Formik
-          initialValues={{ email: "hello1@gmail.com", password: "123456@" }}
+          initialValues={{ email: "hello1@gmail.com", password: "1234567" }}
           onSubmit={async (values) => {
             try {
-              await mutateAsync({
+             await mutateAsync({
                 email: values.email,
                 password: values.password,
+              
               });
             } catch (error) {
               console.log(error);
@@ -75,6 +91,9 @@ const Login = () => {
                 focusBorderColor: "blue.400",
               }}
             />
+         
+            
+            
             <Button
               isLoading={isLoading}
               colorScheme="blue"
@@ -83,10 +102,33 @@ const Login = () => {
             >
               Login
             </Button>
+            
+            
+            
+            <Button className="Signup-button"
+              type="submit"
+              onClick={signup }
+            >
+
+              Signup
+            </Button>
+            <Button className="forgot"
+              type="submit"
+              onClick={forgot}
+            >
+              Forgot Password?
+              
+            </Button>
+            <addminPannel/>
+           
           </Form>
+          
         </Formik>
       </Stack>
+     
     </Container>
+   
+    </div>
   );
 };
 

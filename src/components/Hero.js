@@ -45,7 +45,7 @@ export function Hero(props){
 		return (
        <>   
        <Container>
-		
+	   
 		
 		<div className = "App">
              
