@@ -2,12 +2,11 @@
 import {React,useEffect,useState} from "react";
 import{ useNavigate} from 'react-router-dom';
 import "./Hero.css";
-import { Container,} from "react-bootstrap";
-import  "./Video";
-import "../App";
+import "../Video/Video";
 
 
-// import { useNavigate } from "react-router";
+
+
 
 export function Hero(props){
 	
@@ -32,7 +31,7 @@ export function Hero(props){
 		}});
 	
 		const { DataisLoaded, datas } = state;
-		// const Navigate = useNavigate();
+	
 	const navigate = useNavigate();
     const Matches = () => {
         navigate("/Stream");
@@ -44,7 +43,7 @@ export function Hero(props){
 
 		return (
        <>   
-       <Container>
+       
 	   
 		
 		<div className = "App">
@@ -55,9 +54,9 @@ export function Hero(props){
             <main className="page-content">
   <div className="card">
     <div className="content">
-      {/* <h2 className="title">Match_id:{data.id},</h2> */}
+     
       <h2 className="title"> {data.description}</h2>
-	  {/* <button className="btn"> <a href={data.embed_code}>Click Here to watch</a></button> */}
+	  
 	  
       <button className="btn" onClick={Matches }>Click Here to Watch</button>
 
@@ -73,7 +72,7 @@ export function Hero(props){
 		</div>
 		{/* <Link to ="/Video"/> */}
 		
-    </Container>
+    
    
   </>
 

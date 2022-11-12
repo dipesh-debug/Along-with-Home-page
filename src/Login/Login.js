@@ -1,8 +1,7 @@
-import { Button } from "@chakra-ui/button";
-import { Container, Stack } from "@chakra-ui/layout";
+
 
 import { Form, Formik } from "formik";
-import { InputControl } from "formik-chakra-ui";
+
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useMutation } from "react-query";
@@ -12,6 +11,7 @@ import "./Login.css";
 
 import { login } from "../networkCalls";
 import { actionTypes, useStateValue } from "../store";
+import { InputControl } from "formik-chakra-ui";
 
 
 
@@ -20,7 +20,7 @@ const Login = () => {
   const [{ token }, dispatch] = useStateValue();
   console.log(token);
   const navigate = useNavigate();
-  const { isError, isLoading, mutateAsync } = useMutation(
+  const { isError,  mutateAsync } = useMutation(
     "login",
     login,
     {
@@ -51,13 +51,8 @@ const Login = () => {
 
   return (
     <div className="Box-front">
-    <Container
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-    >
-      <Stack width="300px" p="4" boxShadow="xl" borderRadius="xl">
+   
+      
         <Formik
           initialValues={{ email: "hello1@gmail.com", password: "1234567" }}
           onSubmit={async (values) => {
@@ -73,7 +68,10 @@ const Login = () => {
           }}
         >
           <Form>
-            <InputControl
+          <div class="login">
+	<h1>Login</h1>
+    
+  <InputControl
               label="Email:"
               name="email"
               inputProps={{
@@ -86,49 +84,46 @@ const Login = () => {
               label="Password:"
               name="password"
               inputProps={{
-                type: "password",
+                type:"password",
                 placeholder: "Enter Password...",
                 focusBorderColor: "blue.400",
               }}
+             
             />
-         
-            
-            
-            <Button
-              isLoading={isLoading}
-              colorScheme="blue"
-              mt="4"
-              type="submit"
-            >
-              Login
-            </Button>
-            
-            
-            
-            <Button className="Signup-button"
+        <button type="submit" 
+        
+        className="btn btn-success btn-block btn-large">Login</button>
+    
+    <button className="btn btn-primary btn-block btn-large"
               type="submit"
               onClick={signup }
             >
 
               Signup
-            </Button>
-            <Button className="forgot"
+            </button>
+            <button  className="btn btn-danger btn-block btn-small"
               type="submit"
               onClick={forgot}
             >
               Forgot Password?
               
-            </Button>
-            <addminPannel/>
+            </button>
+</div>
+         
+            
+
+            
+            
+           
+            
            
           </Form>
           
         </Formik>
-      </Stack>
-     
-    </Container>
+  
    
     </div>
+
   );
 };
 

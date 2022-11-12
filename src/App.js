@@ -1,4 +1,3 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import {
   Routes,
@@ -10,13 +9,14 @@ import {
 import Home from "./Home/Home";
 import Login from "./Login/Login";
 import Signup from "./Signup/Signup";
-import Video from "./components/Video";
-import Forgotpassword from "./components/Forgotpassword";
+import Video from "./components/Video/Video";
+import Forgotpassword from "./components/ForgotPassword/Forgotpassword";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { actionTypes, useStateValue } from "./store";
 import { useCookies } from "react-cookie";
 import PasswordReset from "./components/PasswordReset/Password";
-
+import "./App.css"
+import About from "./components/About/About";
 export function App(){
 const queryClient = new QueryClient();
 
@@ -36,7 +36,7 @@ const queryClient = new QueryClient();
   }, [dispatch, token, cookie]);
 
   return (
-    <ChakraProvider>
+    <div className ="App">
       <QueryClientProvider client={queryClient}>
         <Router>
           <Routes>
@@ -44,6 +44,7 @@ const queryClient = new QueryClient();
               {token ? <Home /> : <Navigate to="/login" />}
             </Route> */}
             <Route path="/" element={token ? <Home /> : <Navigate replace to="/login" />} />
+            <Route  path="/about"  element={token ? <About /> :<Navigate replace to ="/about"/>}></Route>
             {/* <Route path="/login">
               {!token ? <Login /> : <Navigate to="/" />}
             </Route> */}
@@ -58,12 +59,15 @@ const queryClient = new QueryClient();
             </Route> */}
              <Route  path="/Stream"  element={token ? <Video /> : <Navigate replace to="/" />} />
              <Route  path="/forgotpassword"  element={ <Forgotpassword/> } />
-            {/* <Navigate replace to="/" /> */}
+             
             <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+
+            
           </Routes>
         </Router>
       </QueryClientProvider>
-    </ChakraProvider>
+      </div>
+    
   );
 };
 

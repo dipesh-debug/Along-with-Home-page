@@ -1,13 +1,12 @@
-// import { Button } from "@chakra-ui/button";
-import { Box } from "@chakra-ui/layout";
+
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router";
 import { actionTypes, useStateValue } from "../store";
-import Footer from "../components/Footer";
-import Hero from "../components/Hero";
-import NavBar from "../components/Navbar";
-import  "../components/Video";
+import Footer from "../components/Footer/Footer";
+import Hero from "../components/Hero/Hero";
+import NavBar from "../components/Navbar/Navbar";
+import  "../components/Video/Video";
 
 const Home = () => {
   const [, , removeCookie] = useCookies(["jwt"]);
@@ -20,13 +19,15 @@ const Home = () => {
   };
 
   return (
-    <Box>
-      {" "}
+   
+      <>
+      <div className="scroll">
       <NavBar logout={logout} />
       <Hero />
      
       <Footer />
-    </Box>
+      </div>
+   </>
   );
 };
 

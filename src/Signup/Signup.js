@@ -1,24 +1,18 @@
-
-import { Button } from "@chakra-ui/button";
-import { Container, Stack } from "@chakra-ui/layout";
-
-import { Form, Formik } from "formik";
+import {  Form, Formik } from "formik";
 import { InputControl } from "formik-chakra-ui";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
-
-
 import {  signup } from "../networkCalls";
 import { actionTypes, useStateValue } from "../store";
-
+import "./Signup.css";
 const Signup = () => {
   const [, setCookie] = useCookies(["jwt"]);
   const [{ token }, dispatch] = useStateValue();
   console.log(token);
   const navigate = useNavigate();
-  const {  isLoading, mutateAsync } = useMutation(
+  const { mutateAsync } = useMutation(
     "signup",
     signup,
     {
@@ -35,30 +29,28 @@ const Signup = () => {
   
 
   return (
-        <Container
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-    >
-      <Stack width="300px" p="4" boxShadow="xl" borderRadius="xl">
+
         <Formik
-          initialValues={{ email: "@gmail.com", password: "123456", name: "",password2 :"123456" }}
+          initialValues={{ email: "", password: "", name: "" }}
     onSubmit={async (values) => {
                   try {
                     await mutateAsync({
                       name : values.name,
                       email: values.email,
                       password: values.password,
-                      password2:values.password2,
+                     
                     });
                   } catch (error) {
                     console.log(error);
                   }
                 }}
               >
+                
                 <Form>
-                  <InputControl
+                <div class="signup">
+	              <h1>Signup</h1>
+    
+                <InputControl
                     label="Name:"
                     name="name"
                     inputProps={{
@@ -85,27 +77,14 @@ const Signup = () => {
                       focusBorderColor: "blue.400",
                     }}
                   />
-                  <InputControl
-                    label="Password2:"
-                    name="password"
-                    inputProps={{
-                      type: "password",
-                      placeholder: "Enter Password...",
-                      focusBorderColor: "blue.400",
-                    }}
-                  />
-                  <Button
-                    isLoading={isLoading}
-                    colorScheme="blue"
-                    mt="4"
-                    type="submit"
-                  >
-                    Register
-                  </Button>
+        <button type="submit" 
+        
+        className="btn btn-success btn-block btn-large">Register</button>
+             </div>
                 </Form>
               </Formik>
-            </Stack>
-          </Container>
+              
+          
    
   );
 };

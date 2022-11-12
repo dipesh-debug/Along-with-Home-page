@@ -1,7 +1,8 @@
 import {React,useState,useEffect} from 'react';
 import ReactPlayer from 'react-player/youtube';
 import"./Video.css";
-import  "./Hero";
+import  "../Hero/Hero";
+
 
 
 
@@ -40,42 +41,25 @@ export function Stream() {
         
               
              <div className = "Stream-app">
-             
-
-                  
-                  {
+             {
                      datas.map((data) => (
-                        
- 
-  <><h1 className='text'>Match_id:{data.id}</h1>
+<><h1 className='text'>Match_id:{data.id}</h1>
   <h2 className='desc'>
  {data.description}
   </h2>
- 
-
-
-      
-      
-     
-        <ReactPlayer 
+          <ReactPlayer 
           className='react-player'
-          url={data.embed_code} 
-                      // playing
+          url={data.embed_code}
                       loop
                       controls
                             
           />
-        
-   
-        
-       </>
+        </>
      
          
                      ))
 }
-
-                     
-      </div>
+</div>
               </>
 
                      
@@ -83,7 +67,7 @@ export function Stream() {
                      
 }
       
-      export default Stream;
+export default Stream;
     
     
 
