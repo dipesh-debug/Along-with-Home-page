@@ -6,7 +6,7 @@ const Footer = () => {
     <Grid
       placeItems="center"
       fontSize="2xl"
-      bg="blue.600"
+     
       color="white"
       p="8"
     >

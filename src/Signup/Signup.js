@@ -6,6 +6,8 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
 import {  signup } from "../networkCalls";
 import { actionTypes, useStateValue } from "../store";
+import { useSpring, animated } from "react-spring";
+import SImage from "./signup.png";
 import "./Signup.css";
 const Signup = () => {
   const [, setCookie] = useCookies(["jwt"]);
@@ -24,20 +26,29 @@ const Signup = () => {
     }
   );
 
-
+  const imageAnimation = useSpring({
+    from: { opacity: 0, transform: "translateX(100%)" },
+    to: { opacity: 1, transform: "translateX(0%)" },
+    config: { duration: 1000 },
+    });
 
   
 
   return (
+    <>
+      <animated.div style ={imageAnimation} className="image-cont">
+        <img src={SImage} alt="football"  className="responsed-image" />
+      </animated.div>
 
         <Formik
-          initialValues={{ email: "", password: "", name: "" }}
+          initialValues={{ email: "", password: "", name: "" ,password2:""}}
     onSubmit={async (values) => {
                   try {
                     await mutateAsync({
                       name : values.name,
                       email: values.email,
                       password: values.password,
+                      password2:values.password2,
                      
                     });
                   } catch (error) {
@@ -77,6 +88,15 @@ const Signup = () => {
                       focusBorderColor: "blue.400",
                     }}
                   />
+                   <InputControl
+                    label="Confirm Password:"
+                    name="password2"
+                    inputProps={{
+                      type: "password",
+                      placeholder: "Enter Password...",
+                      focusBorderColor: "blue.400",
+                    }}
+                  />
         <button type="submit" 
         
         className="btn btn-success btn-block btn-large">Register</button>
@@ -84,7 +104,7 @@ const Signup = () => {
                 </Form>
               </Formik>
               
-          
+          </>
    
   );
 };

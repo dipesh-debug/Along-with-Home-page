@@ -3,8 +3,10 @@ import {React,useEffect,useState} from "react";
 import{ useNavigate} from 'react-router-dom';
 import "./Hero.css";
 import "../Video/Video";
-
-
+import { useCookies } from "react-cookie";
+import { actionTypes, useStateValue } from "../../store";
+import Navbar from '../Navbar/Navbar';
+import Footer from "../Footer/Footer";
 
 
 
@@ -34,16 +36,22 @@ export function Hero(props){
 	
 	const navigate = useNavigate();
     const Matches = () => {
-        navigate("/Stream");
+        navigate("/video");
 		
 		
     }
 		
-		
+    const [, , removeCookie] = useCookies(["jwt"]);
+    const [, dispatch] = useStateValue();
+    const logout = () => {
+      removeCookie("jwt");
+      dispatch({ type: actionTypes.SET_TOKEN, value: null });
+      navigate("/login");
+    };
 
 		return (
        <>   
-       
+       <Navbar logout ={logout}/>
 	   
 		
 		<div className = "App">
@@ -51,7 +59,7 @@ export function Hero(props){
 			 {
 				datas.map((data) => (
 				
-            <main className="page-content">
+            <main className="page-content" key ={data.id}>
   <div className="card">
     <div className="content">
      
@@ -73,7 +81,7 @@ export function Hero(props){
 		{/* <Link to ="/Video"/> */}
 		
     
-   
+    <Footer />
   </>
 
 	);

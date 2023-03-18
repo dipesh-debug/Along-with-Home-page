@@ -2,17 +2,6 @@
 
 
 
-h1 {
-   font-weight: 700;
-   color: #fff;
-   font-size: 1.75rem;
-}
-
-h2 {
-   font-weight: 700;
-   color: #000;
-   font-size: 1.75rem;
-}
 
 .intro {
   font-size: 1.15rem;
@@ -20,12 +9,12 @@ h2 {
 }
 
 span {
-   color: #fda039;
+   color: #1a2c79;
 }
 
 .black {
   font-weight: 700;
-  color: #000;
+  color: #ffffff;
 }
 
 /*==== main-grid Layout ====*/
@@ -38,38 +27,20 @@ span {
 
 /* ==== Layout ====*/
 
-.header {
-  background: #000;
-}
 
 .header-content{
   display: flex;
   flex-direction: row;
   grid-column: 2 / -2;
 }
-
-.logo {
-  background: #fda039;
-  color: #000;
-  font-weight: 700;
-  padding: 1em .5em;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1.25rem;
-}
-
-
-
-
-
-
-
-
-
 main {
-  background-color: #fff;
-  color: #000;
+  background-color: rgb(20,17,85);
+  background-color: linear-gradient(90deg, rgba(20,17,85,1) 0%, rgba(0,0,0,1) 100%);
+  color: #ffffff;
   grid-column: 2 /-2;
+  opacity: 0.9;
+  height:100%;
+  width:100%
 }
 
   .head {
@@ -80,7 +51,7 @@ main {
 }
 
 .page-title {
-  color: #000;
+  color: #ffffff;
   font-size: 2.5rem;
   justify-self: center;
 }
@@ -106,7 +77,7 @@ main {
   width: 100px;
   height: 3px;
   margin-top: 1em;
-  background: #fda039;
+  background: #e08114;
   margin-left: auto;
   margin-right: auto;
 }
@@ -125,24 +96,9 @@ main {
    color: #000;
 }
 
-.social {
-  order: -1;
-  font-size: 1.75rem;
-  padding-top: 3em;
-  padding-bottom: 2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
 
-.icon {
-  color: #000;
-}
-.icon:hover,
-.icon:focus {
-  cursor: mouse;
-  color: #fda039;
-}
+
+
 
 .footer-text {
   display: flex;

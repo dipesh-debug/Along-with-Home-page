@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Navigate,
 } from "react-router-dom";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 import Home from "./Home/Home";
 import Login from "./Login/Login";
@@ -17,6 +18,8 @@ import { useCookies } from "react-cookie";
 import PasswordReset from "./components/PasswordReset/Password";
 import "./App.css"
 import About from "./components/About/About";
+import Hero from "./components/Hero/Hero";
+
 export function App(){
 const queryClient = new QueryClient();
 
@@ -39,33 +42,25 @@ const queryClient = new QueryClient();
     <div className ="App">
       <QueryClientProvider client={queryClient}>
         <Router>
-          <Routes>
-            {/* <Route path="/" exact={true}>
-              {token ? <Home /> : <Navigate to="/login" />}
-            </Route> */}
-            <Route path="/" element={token ? <Home /> : <Navigate replace to="/login" />} />
-            <Route  path="/about"  element={token ? <About /> :<Navigate replace to ="/about"/>}></Route>
-            {/* <Route path="/login">
-              {!token ? <Login /> : <Navigate to="/" />}
-            </Route> */}
-             <Route path="/login" element={!token ? <Login/> : <Navigate replace to="/" />} />
-            {/* <Route path="/signup">
-              {!token ? <Signup /> : <Navigate to="/" />}
-            </Route> */}
-             <Route path="/signup" element={!token ? <Signup /> : <Navigate replace to="/" />} />
-            {/* <Route exact path="/Video" component={Video}>
-            {!token ? <Signup /> : <Navigate to="/" />}
-              
-            </Route> */}
-             <Route  path="/Stream"  element={token ? <Video /> : <Navigate replace to="/" />} />
-             <Route  path="/forgotpassword"  element={ <Forgotpassword/> } />
-             
-            <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+        <Routes>
+          <Route  path = "/" element ={<LandingPage/>}/>
+          <Route  path = "/login" element ={<Login/>}/>
+          <Route  path = "/signup" element ={<Signup/>}/>
+          <Route path="/home" element={token ? <Home /> : <Navigate replace to="/login" />} />
+          <Route path="/signup" element={!token ? <Signup /> : <Navigate replace to="/login" />} />
+          <Route  path="/forgotpassword"  element={ <Forgotpassword/> } />
+          <Route  path="/stream"  element={token ? <Hero /> : <Navigate replace to="/login" />} />
+          <Route  path="/video"  element={token ? <Video /> : <Navigate replace to="/login" />} />
+          <Route path="/about" element={token ? <About /> : <Navigate replace to="/login" />} />
+        </Routes></Router>
+
+         
 
             
-          </Routes>
-        </Router>
+          
+        
       </QueryClientProvider>
+      
       </div>
     
   );

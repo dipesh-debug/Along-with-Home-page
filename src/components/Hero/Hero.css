@@ -73,7 +73,7 @@
   transition: transform calc(var(--d) * 2) var(--e);
 }
 .card:nth-child(1):before {
-  background-image: url(https://t3.ftcdn.net/jpg/01/82/92/02/360_F_182920267_FxAvatbfJCixzXuM5VXbogjFTR6BqiCv.jpg);
+  background-image: url("./slide.jpg");
   width: 100%;
   height: 100%;
 }
@@ -99,7 +99,7 @@
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
-  color: #0d0d0d;
+  color: #ffffff;
   text-align: left;
   
 }

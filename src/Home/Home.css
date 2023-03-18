@@ -1,3 +1,53 @@
 .scroll{
     overflow: scroll;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.header .fa-user {
+    color: white;
+    margin-right: 0.5rem;
+}
+
+.profile-icon {
+    font-size: 48px;
+    margin-right: 16px;
+    color: #1e90ff;
+    animation: rotate 2s linear infinite;
+}
+
+.profile-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.wel-text{
+    color: bisque;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

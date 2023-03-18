@@ -1,7 +1,7 @@
 import {React,useState,useEffect} from 'react';
-import ReactPlayer from 'react-player/youtube';
 import"./Video.css";
 import  "../Hero/Hero";
+
 
 
 
@@ -18,7 +18,7 @@ export function Stream() {
   
 	useEffect(()=>{
 		fetch(
-"http://127.0.0.1:9000/api/streams/matches?format=json")
+`http://127.0.0.1:9000/api/streams/matches?format=json`)
 			.then((res) => res.json())
 			.then((json) => {
 				setState({
@@ -34,26 +34,25 @@ export function Stream() {
    
 
           return (
+           
 
          <>
+         {/* <Navbar/> */}
+         
+          <div className = "Stream-app">
           
-        
-        
-              
-             <div className = "Stream-app">
              {
                      datas.map((data) => (
 <><h1 className='text'>Match_id:{data.id}</h1>
   <h2 className='desc'>
  {data.description}
   </h2>
-          <ReactPlayer 
-          className='react-player'
-          url={data.embed_code}
-                      loop
-                      controls
-                            
-          />
+   
+          <div className="Streaming">
+            <iframe title ="Streaming" 
+             src={data.embed_code} autoplay
+              width={1000} height={520}   allow="autoplay;encrypted-media" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen 
+              ></iframe></div>
         </>
      
          
@@ -68,6 +67,4 @@ export function Stream() {
 }
       
 export default Stream;
-    
-    
 

@@ -61,3 +61,30 @@
 .success_msg {
 	background-color: #5cdd5c;
 }
+.image-conte {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: moveInRight 1s ease-out;
+    }
+    
+    @keyframes moveInRight {
+    0% {
+    transform: translateX(100%);
+    }
+    100% {
+    transform: translateX(0%);
+    }
+    }
+  .responsed-image {
+    max-width: 500px;
+    height: auto;
+    }

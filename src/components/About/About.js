@@ -1,12 +1,24 @@
-import React from 'react'
-import Navbar from "../Navbar/Navbar";
+import React from 'react';
+import Navbar from '../Navbar/Navbar';
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router";
+import { actionTypes, useStateValue } from "../../store";
+
 import"./About.css";
 const About = () => {
+  const [, , removeCookie] = useCookies(["jwt"]);
+  const [, dispatch] = useStateValue();
+  const navigate = useNavigate();
+  const logout = () => {
+    removeCookie("jwt");
+    dispatch({ type: actionTypes.SET_TOKEN, value: null });
+    navigate("/login");
+  };
   return (
 
  
     <>
-    <Navbar/>
+  <Navbar logout={logout}/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" /><script src="https://kit.fontawesome.com/8fe048c345.js" crossorigin="anonymous"></script><title>Homepage With CSS GRID</title><body>
       <main class="main-grid">
         <div class="head">

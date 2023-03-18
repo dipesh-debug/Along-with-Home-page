@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
-
+import { useSpring, animated } from "react-spring";
+import FImage from "./Forgot.png";
 const ForgotPassword = () => {
 	const [email, setEmail] = useState("");
 	const [msg, setMsg] = useState("");
@@ -25,9 +26,20 @@ const ForgotPassword = () => {
 			}
 		}
 	};
+	const imageAnimation = useSpring({
+		from: { opacity: 0, transform: "translateX(100%)" },
+		to: { opacity: 1, transform: "translateX(0%)" },
+		config: { duration: 1000 },
+		});
+	  
 
 	return (
+		<>
+		
 		<div className={styles.container}>
+		<animated.div style ={imageAnimation} className="image-conte">
+        <img src={FImage} alt="football"  className="responed-image" />
+      </animated.div>
 			<form className={styles.form_container} onSubmit={handleSubmit}>
 				<p>ForgotPassword</p>
 				<input
@@ -45,7 +57,7 @@ const ForgotPassword = () => {
 					Submit
 				</button>
 			</form>
-		</div>
+		</div></>
 	);
 };
 
