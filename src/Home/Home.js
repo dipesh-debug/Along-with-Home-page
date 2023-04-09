@@ -28,7 +28,7 @@ const Home = () => {
 useEffect(() => {
   const fetchProfileData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/user/profile/", {
+      const response = await axios.get("/api/user/profile/", {
         headers: {
           Authorization: `Bearer ${cookies.jwt}`,
             },
