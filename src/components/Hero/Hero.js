@@ -6,23 +6,43 @@ import { useCookies } from "react-cookie";
 import { actionTypes, useStateValue } from "../../store";
 import Navbar from '../Navbar/Navbar';
 import Footer from "../Footer/Footer";
+import axios from "axios";
 
 export function Hero(props) {
-
+	const [cookies] = useCookies(["jwt"]);
   const [state, setState] = useState({
     datas: [],
     DataisLoaded: false
   });
 
   useEffect(() => {
-    fetch("http://127.0.0.1:9000/api/streams/matches?format=json")
-      .then((res) => res.json())
-      .then((json) => {
-        setState({
-          datas: json,
-          DataisLoaded: true
-        })
+    const api = axios.create({
+      baseURL: process.env.REACT_APP_SERVER,
+    });
+
+    api.get("/api/user/profile/", {
+      headers: {
+        Authorization: `Bearer ${cookies.jwt}`,
+      },
+    })
+      .then((response) => {
+        
+		fetch(`http://127.0.0.1:9000/api/streams/matches?format=json`, {
+			headers: {
+			  'Authorization': `Bearer ${cookies.jwt}`
+			}
+		  })
+          .then((res) => res.json())
+          .then((json) => {
+            setState({
+              datas: json,
+              DataisLoaded: true
+            });
+          })
       })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   const { DataisLoaded, datas } = state;

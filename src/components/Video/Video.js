@@ -15,7 +15,7 @@ export function Stream() {
 			DataisLoaded: false
 
 	});
-  
+
 	useEffect(()=>{
 		fetch(
 `http://127.0.0.1:9000/api/streams/matches?format=json`)
@@ -27,6 +27,7 @@ export function Stream() {
 				});
 			})
 	});
+
     const { DataisLoaded, datas } = state;
     if (!DataisLoaded) return <div>
 			<h1> Please wait some time.... </h1> </div> ;
