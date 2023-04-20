@@ -163,3 +163,8 @@ button.click {
         margin: auto;
       }
     }
+.live{
+  color: aliceblue;
+  text-shadow: 2px 2px #000;
+  animation: slide-up 1s ease-in-out forwards;
+}

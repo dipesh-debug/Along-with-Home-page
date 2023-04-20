@@ -30,7 +30,7 @@ function LandingPage() {
         <img src={footballImage} alt="football"  className="responsive-image" />
       </animated.div>
       <animated.div style={descriptionAnimation} className="description">
-        <h1>Live Streaming Football</h1>
+        <h1 className="live">Live Streaming Football</h1>
         <p>
           Get access to live streaming of all the top football leagues and
           competitions. Never miss a match again!
